@@ -2,12 +2,24 @@ package org.selenium.pom.utils;
 
 import java.util.Properties;
 
+import org.selenium.pom.constants.EnvType;
+
 public class ConfigLoader {
 	private final Properties properties;
 	private static ConfigLoader configLoader;
 	
 	private ConfigLoader() {
-		properties = PropertyUtils.propertyLoader("src/test/resources/config.properties");
+		String env = System.getProperty("env", String.valueOf(EnvType.STAGING));
+		
+		switch (EnvType.valueOf(env)) {
+		case STAGING:
+			properties = PropertyUtils.propertyLoader("src/test/resources/stg_config.properties");
+			break;
+		case PRODUCTION: 
+			properties = PropertyUtils.propertyLoader("src/test/resources/prod_config.properties");
+			break;
+		default: throw new IllegalStateException("Invalid env type: " + env);
+		}
 	}
 	
 	public static ConfigLoader getInstance() {

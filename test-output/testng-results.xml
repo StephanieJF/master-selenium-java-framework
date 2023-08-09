@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-09T13:40:49 EDT" name="Default suite" finished-at="2023-08-09T13:41:05 EDT" duration-ms="15732">
+  <suite started-at="2023-08-09T18:44:41 EDT" name="Default suite" finished-at="2023-08-09T18:44:46 EDT" duration-ms="5589">
     <groups>
     </groups>
-    <test started-at="2023-08-09T13:40:49 EDT" name="Default test" finished-at="2023-08-09T13:41:05 EDT" duration-ms="15732">
-      <class name="org.selenium.pom.tests.FirstTestCase">
-        <test-method is-config="true" signature="startDriver(java.lang.String)[pri:0, instance:org.selenium.pom.tests.FirstTestCase@55b7a4e0]" started-at="2023-08-09T13:40:49 EDT" name="startDriver" finished-at="2023-08-09T13:40:52 EDT" duration-ms="2831" status="PASS">
+    <test started-at="2023-08-09T18:44:41 EDT" name="Default test" finished-at="2023-08-09T18:44:46 EDT" duration-ms="5589">
+      <class name="org.selenium.pom.tests.AddToCart">
+        <test-method is-config="true" signature="startDriver(java.lang.String)[pri:0, instance:org.selenium.pom.tests.AddToCart@7714e963]" started-at="2023-08-09T18:44:41 EDT" name="startDriver" finished-at="2023-08-09T18:44:44 EDT" duration-ms="2833" status="PASS">
           <params>
             <param index="0">
               <value is-null="true"/>
@@ -16,15 +16,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startDriver -->
-        <test-method signature="loginAndCheckoutUsingDirectBankTransfer()[pri:0, instance:org.selenium.pom.tests.FirstTestCase@55b7a4e0]" started-at="2023-08-09T13:40:52 EDT" name="loginAndCheckoutUsingDirectBankTransfer" finished-at="2023-08-09T13:41:05 EDT" duration-ms="12768" status="PASS">
+        <test-method signature="addToCartFromStorePage()[pri:0, instance:org.selenium.pom.tests.AddToCart@7714e963]" started-at="2023-08-09T18:44:44 EDT" name="addToCartFromStorePage" finished-at="2023-08-09T18:44:46 EDT" duration-ms="2620" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- loginAndCheckoutUsingDirectBankTransfer -->
-        <test-method is-config="true" signature="quitDriver()[pri:0, instance:org.selenium.pom.tests.FirstTestCase@55b7a4e0]" started-at="2023-08-09T13:41:05 EDT" name="quitDriver" finished-at="2023-08-09T13:41:05 EDT" duration-ms="113" status="PASS">
+        </test-method> <!-- addToCartFromStorePage -->
+        <test-method is-config="true" signature="quitDriver()[pri:0, instance:org.selenium.pom.tests.AddToCart@7714e963]" started-at="2023-08-09T18:44:46 EDT" name="quitDriver" finished-at="2023-08-09T18:44:46 EDT" duration-ms="109" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quitDriver -->
-      </class> <!-- org.selenium.pom.tests.FirstTestCase -->
+      </class> <!-- org.selenium.pom.tests.AddToCart -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

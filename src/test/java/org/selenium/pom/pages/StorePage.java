@@ -21,6 +21,11 @@ public class StorePage extends BasePage{
 		return this;
 	}
 	
+	public StorePage load() {
+		load("/store");
+		return this;
+	}
+	
 	private StorePage clickSearchBtn() { 
 		driver.findElement(searchBtn).click();
 		return this;
@@ -28,6 +33,11 @@ public class StorePage extends BasePage{
 	
 	public StorePage search(String txt) {
 		enterTextInSearchFld(txt).clickSearchBtn();		
+		return this;
+	}
+	
+	public StorePage getUrl() {
+		wait.until(ExpectedConditions.urlContains("s=Blue&post_type=product"));
 		return this;
 	}
 	

@@ -23,10 +23,10 @@ public class SignUpApi {
 		return cookies;
 	}
 	
-	private String fetchRegisterNonceValueUsingGroovy() {
-		Response response = getAccount();
-		return response.htmlPath().getString("**.findAll { it.@name == 'woocommerce-register-nonce' }.@value");
-	}
+//	private String fetchRegisterNonceValueUsingGroovy() {
+//		Response response = getAccount();
+//		return response.htmlPath().getString("**.findAll { it.@name == 'woocommerce-register-nonce' }.@value");
+//	}
 
 	
 	private String fetchRegisterNonceValueUsingJsoup() {
@@ -38,7 +38,8 @@ public class SignUpApi {
 	
 	private Response getAccount() {
 		Cookies cookies = new Cookies();
-		Response response = given().
+		Response response = 
+		given().
 			baseUri(ConfigLoader.getInstance().getBaseUrl()).
 			cookies(cookies).
 			log().all().

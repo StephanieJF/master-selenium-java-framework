@@ -29,9 +29,16 @@ public class CheckoutPage extends BasePage {
 	private final By pwdFld = By.id("password");
 	private final By loginBtn = By.name("login");
 	private final By overlay = By.cssSelector(".blockUI.blockOverlay");
+	
+	private final By productName = By.cssSelector("td[class='product-name']");
 
 	public CheckoutPage(WebDriver driver) {
 		super(driver);
+	}
+	
+	public CheckoutPage load() {
+		load("/checkout/");
+		return this;
 	}
 	
 	public String getCheckoutPageTitle() {
@@ -146,6 +153,10 @@ public class CheckoutPage extends BasePage {
 		return enterLoginName(user.getUsername()).
 		enterLoginPwd(user.getPassword()).
 		clickLoginBtn();
+	}
+	
+	public String getProductName() {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(productName)).getText();
 	}
 
 }

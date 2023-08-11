@@ -9,7 +9,7 @@ import org.selenium.pom.pages.StorePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AddToCart extends BaseTest {
+public class AddToCartTest extends BaseTest {
 	
 	@Test
 	public void addToCartFromStorePage() throws IOException {

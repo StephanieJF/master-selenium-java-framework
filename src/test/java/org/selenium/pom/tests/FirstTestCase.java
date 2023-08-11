@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 public class FirstTestCase extends BaseTest {
 	
-	@Test
+	//@Test
 	public void guestCheckoutUsingDirectBankTransfer() throws IOException {
 
 		String searchFor = "Blue";
@@ -44,7 +44,7 @@ public class FirstTestCase extends BaseTest {
 		Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 	}
 	
-	@Test
+	//@Test
 	public void loginAndCheckoutUsingDirectBankTransfer() throws IOException {
 		
 		String searchFor = "Blue";

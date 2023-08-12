@@ -21,6 +21,7 @@ public class CheckoutPage extends BasePage {
 	private final By postCodeFld = By.id("billing_postcode");
 	private final By emailFld = By.id("billing_email");
 	private final By directBankTransferRadioBtn = By.id("payment_method_bacs");
+	private final By cashOnDeliveryRadioBtn = By.id("payment_method_cod");
 	private final By placeOrderBtn = By.cssSelector("button#place_order");
 	private final By orderConfirmationText = By.cssSelector(".woocommerce-notice");
 	
@@ -115,6 +116,11 @@ public class CheckoutPage extends BasePage {
 		if(!e.isSelected()) {
 			e.click();
 		}
+		return this;
+	}
+	
+	public CheckoutPage selectCashOnDeliveryRadioBtn() {
+		wait.until(ExpectedConditions.elementToBeClickable(cashOnDeliveryRadioBtn));
 		return this;
 	}
 	

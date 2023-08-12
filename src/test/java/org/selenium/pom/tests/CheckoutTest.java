@@ -53,5 +53,41 @@ public class CheckoutTest extends BaseTest {
 		placeOrder();
 	Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 	}
+	
+	@Test
+	public void guestCheckoutUsingCashOnDelivery() throws InterruptedException, IOException {
+		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
+		CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
+		CartApi cartApi = new CartApi();
+		cartApi.addToCart(1215, 1);
+		injectCookiesToBrowser(cartApi.getCookies());
+		checkoutPage.load().
+		setBillingAddress(billingAddress).
+		selectCashOnDeliveryRadioBtn().
+		placeOrder();
+	Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
+	}
+	
+	@Test
+	public void loginAndCheckoutUsingCashOnDelivery() throws IOException, InterruptedException {
+		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
+		SignUpApi signUpApi = new SignUpApi();
+		String username = "demouser" + new FakerUtils().generateRandomNumber();
+		User user = new User().
+				setUsername(username).
+				setPassword("demopwd").
+				setEmail(username + "@testing.com");
+		signUpApi.register(user);
+		CartApi cartApi = new CartApi(signUpApi.getCookies());
+		Product product = new Product(1215);
+		cartApi.addToCart(product.getId(), 1);
+		CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
+		Thread.sleep(5000);
+		injectCookiesToBrowser(signUpApi.getCookies());
+		checkoutPage.load().
+		setBillingAddress(billingAddress).
+		selectCashOnDeliveryRadioBtn().placeOrder();
+		Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
+	}
 
 }

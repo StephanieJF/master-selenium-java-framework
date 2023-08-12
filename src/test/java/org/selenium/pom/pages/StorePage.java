@@ -11,6 +11,7 @@ public class StorePage extends BasePage{
 	private final By searchBtn = By.cssSelector("button[value='Search']");
 	private final By title = By.cssSelector(".woocommerce-products-header__title");
 	private final By viewCartLink = By.cssSelector("a[title='View cart']");
+	private final By message = By.cssSelector(".woocommerce-info");
 	
 	public StorePage(WebDriver driver) {
 		super(driver);
@@ -36,6 +37,11 @@ public class StorePage extends BasePage{
 		return this;
 	}
 	
+	public ProductPage searchExactMatch(String txt) {
+		enterTextInSearchFld(txt).clickSearchBtn();
+		return new ProductPage(driver);
+	}
+	
 	public StorePage getUrl() {
 		wait.until(ExpectedConditions.urlContains("s=Blue&post_type=product"));
 		return this;
@@ -59,5 +65,13 @@ public class StorePage extends BasePage{
 		wait.until(ExpectedConditions.elementToBeClickable(viewCartLink)).click();
 		return new CartPage(driver);
 	}
-
+	
+	public String getProductSearchFailureMessage() {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(message)).getText();
+	}
+	
+	public ProductPage navigateToProductPage(String productName) {
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h2[contains(text(), '" + productName + "')]"))).click();
+		return new ProductPage(driver);
+	}
 }

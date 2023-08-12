@@ -7,6 +7,7 @@ import org.selenium.pom.api.actions.SignUpApi;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.Product;
 import org.selenium.pom.objects.User;
+import org.selenium.pom.pages.AccountPage;
 import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.utils.FakerUtils;
 import org.testng.Assert;
@@ -40,5 +41,46 @@ public class LoginTest extends BaseTest {
 		
 		Assert.assertTrue(checkoutPage.getProductName().contains(product.getName()));
 	}
-
+	
+	@Test
+	public void failedLoginAccountDoesNotExist() {
+		String username = "demouser" + new FakerUtils().generateRandomNumber();
+		User user = new User(username, "demopwd");
+		AccountPage accountPage = new AccountPage(getDriver()).
+				load().
+				login(user.getUsername(), user.getPassword());
+		Assert.assertEquals(accountPage.getErrorMessage(), "Error: The username " + user.getUsername() +
+                " is not registered on this site." +
+                " If you are unsure of your username, try your email address instead.");
+	}
+	
+	@Test
+	public void failedLoginIncorrectPassword() {
+		String username = "demouser" + new FakerUtils().generateRandomNumber();
+		User user = new User(username, "demopwd", username + "@testing.com");
+		SignUpApi signUpApi = new SignUpApi();
+		signUpApi.register(user);
+		AccountPage accountPage = new AccountPage(getDriver());
+		accountPage.load().login(user.getUsername(), "demopwd2");
+		Assert.assertEquals(accountPage.getErrorMessage(), "Error: The password you entered for the username "
+                + user.getUsername() + " is incorrect. Lost your password?");
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

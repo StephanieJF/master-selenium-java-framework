@@ -6,5 +6,7 @@
 "city": "San Francisco",
 "state": "California",
 "postCode": "94188",
-"email": "test@testing.com"
+"email": "test@testing.com",
+"company": "democompany",
+"phone": "8881234567"
 }

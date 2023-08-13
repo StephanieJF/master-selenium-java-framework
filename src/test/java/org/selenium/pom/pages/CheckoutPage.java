@@ -110,7 +110,6 @@ public class CheckoutPage extends BasePage {
 			enterPostalCode(billingAddress.getPostCode()).
 			enterEmail(billingAddress.getEmail());
 	}
-	
 	public CheckoutPage selectDirectBankTransfer() {
 		WebElement e = wait.until(ExpectedConditions.elementToBeClickable(directBankTransferRadioBtn));
 		if(!e.isSelected()) {
@@ -118,49 +117,39 @@ public class CheckoutPage extends BasePage {
 		}
 		return this;
 	}
-	
 	public CheckoutPage selectCashOnDeliveryRadioBtn() {
 		wait.until(ExpectedConditions.elementToBeClickable(cashOnDeliveryRadioBtn));
 		return this;
 	}
-	
 	public CheckoutPage placeOrder() {
 		waitForOverlaysToDisappear(overlay); //from basepage
 		driver.findElement(placeOrderBtn).click();
 		return this;
 	}
-	
 	public String getOrderConfirmationText() {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(orderConfirmationText)).getText();
 	}
-	
 	public CheckoutPage clickLoginLink() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(loginLink)).click();
 		return this;
 	}
-	
-	
 	public CheckoutPage enterLoginName(String userName) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(usernameFld)).sendKeys(userName);
 		return this;
 	}
-	
 	public CheckoutPage enterLoginPwd(String password) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(pwdFld)).sendKeys(password);
 		return this;
 	}
-	
 	public CheckoutPage clickLoginBtn() {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(loginBtn)).click();
 		return this;
 	}
-	
 	public CheckoutPage login(User user) {
 		return enterLoginName(user.getUsername()).
 		enterLoginPwd(user.getPassword()).
 		clickLoginBtn();
 	}
-	
 	public String getProductName() {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(productName)).getText();
 	}

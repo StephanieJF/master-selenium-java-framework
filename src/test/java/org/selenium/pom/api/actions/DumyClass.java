@@ -1,22 +1,15 @@
 package org.selenium.pom.api.actions;
 
+import java.io.IOException;
+
+import org.selenium.pom.objects.BillingAddress;
 import org.selenium.pom.objects.User;
 import org.selenium.pom.utils.FakerUtils;
+import org.selenium.pom.utils.JacksonUtils;
 
 public class DumyClass {
 	
-	public static void main(String[] args) {
-//		String username = "demouser" + new FakerUtils().generateRandomNumber();
-//		User user = new User().
-//				setUsername(username).
-//				setPassword("demopwd").
-//				setEmail(username + "@testing.com");
-//		SignUpApi signUpApi = new SignUpApi();
-//		signUpApi.register(user);
-//		System.out.println("REGISTER COOKIES: " + signUpApi.getCookies());
-//		
-//		CartApi cartApi = new CartApi(signUpApi.getCookies());
-//		cartApi.addToCart(1215, 1);
-//		System.out.println("CART COOKIES: " + cartApi.getCookies());
+	public static void main(String[] args) throws IOException {
+
 	}
 }

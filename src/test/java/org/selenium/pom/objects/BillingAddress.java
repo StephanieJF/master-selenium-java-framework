@@ -10,6 +10,8 @@ public class BillingAddress {
 	private String state;
 	private String postCode;
 	private String email;
+	private String phone;
+	private String company;
 	
 	public BillingAddress() {
 		
@@ -82,6 +84,24 @@ public class BillingAddress {
 	}
 	public BillingAddress setEmail(String email) {
 		this.email = email;
+		return this;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public BillingAddress setPhone(String phone) {
+		this.phone = phone;
+		return this;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public BillingAddress setCompany(String company) {
+		this.company = company;
 		return this;
 	}
 

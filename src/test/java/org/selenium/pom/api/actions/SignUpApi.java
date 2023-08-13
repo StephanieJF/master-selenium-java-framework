@@ -66,7 +66,8 @@ public class SignUpApi {
 		formParams.put("woocommerce-register-nonce", fetchRegisterNonceValueUsingJsoup());
 		formParams.put("register", "Register");
 		
-		Response response = given().
+		Response response = 
+		given().
 			baseUri(ConfigLoader.getInstance().getBaseUrl()).
 			headers(headers).
 			formParams(formParams).

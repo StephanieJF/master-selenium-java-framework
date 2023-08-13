@@ -37,7 +37,8 @@ public class CartApi {
 			cookies = new Cookies();
 		}
 			
-		Response response = given().
+		Response response = 
+		given().
 			baseUri(ConfigLoader.getInstance().getBaseUrl()).
 			headers(headers).
 			formParams(formParams).

@@ -13,7 +13,7 @@ public class LocationCodes {
 
     public static String getStateCode(String stateName){
         Map<String, String> stateMap = Map.of(
-                "California", "Ca"
+                "California", "CA"
         );
         return stateMap.get(stateName);
     }

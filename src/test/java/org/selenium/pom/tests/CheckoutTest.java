@@ -15,13 +15,15 @@ import org.selenium.pom.utils.JacksonUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import io.restassured.http.Cookies;
+
 public class CheckoutTest extends BaseTest {
 	
 	@Test
 	public void guestCheckoutUsingDirectBankTransfer() throws IOException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
-		CartApi cartApi = new CartApi();
+		CartApi cartApi = new CartApi(new Cookies());
 		cartApi.addToCart(1215, 1);
 		injectCookiesToBrowser(cartApi.getCookies());
 		checkoutPage.load().
@@ -82,7 +84,7 @@ public class CheckoutTest extends BaseTest {
 	public void guestCheckoutUsingCashOnDelivery() throws InterruptedException, IOException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
-		CartApi cartApi = new CartApi();
+		CartApi cartApi = new CartApi(new Cookies());
 		cartApi.addToCart(1215, 1);
 		injectCookiesToBrowser(cartApi.getCookies());
 		checkoutPage.load().

@@ -13,6 +13,8 @@ import org.selenium.pom.utils.FakerUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import io.restassured.http.Cookies;
+
 public class LoginTest extends BaseTest {
 	
 	@Test
@@ -25,7 +27,7 @@ public class LoginTest extends BaseTest {
 				setEmail(username + "@testing.com");
 		
 		signUpApi.register(user);
-		CartApi cartApi = new CartApi();
+		CartApi cartApi = new CartApi(new Cookies());
 		Product product = new Product(1215);
 		cartApi.addToCart(product.getId(), 1);
 		

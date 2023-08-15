@@ -19,7 +19,7 @@ public class BillingAddress {
 	
 	public BillingAddress(String firstName, String lastName, String country, String addressLineOne, 
 			String city, String state, String postCode, String email) {
-		this.firstName = firstName; //sets the class-level variable with the parameter
+		this.firstName = firstName; //sets the instance variable with the parameter
 		this.lastName = lastName;    
 		this.country = country;
 		this.addressLineOne = addressLineOne;
@@ -47,9 +47,8 @@ public class BillingAddress {
 		return country;
 	}
 
-	public BillingAddress setCountry(String country) {
+	public void setCountry(String country) {
 		this.country = country;
-		return this;
 	}
 	public String getAddressLineOne() {
 		return addressLineOne;
@@ -68,9 +67,8 @@ public class BillingAddress {
 	public String getState() {
 		return state;
 	}
-	public BillingAddress setState(String state) {
+	public void setState(String state) {
 		this.state = state;
-		return this;
 	}
 	public String getPostCode() {
 		return postCode;
@@ -91,18 +89,16 @@ public class BillingAddress {
 		return phone;
 	}
 
-	public BillingAddress setPhone(String phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
-		return this;
 	}
 
 	public String getCompany() {
 		return company;
 	}
 
-	public BillingAddress setCompany(String company) {
+	public void setCompany(String company) {
 		this.company = company;
-		return this;
 	}
 
 }

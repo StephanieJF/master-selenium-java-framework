@@ -9,6 +9,7 @@ public class HomePage extends BasePage {
 	
 	private final By storeMenuLink = By.linkText("Store");
 	private final By viewCartLink = By.cssSelector("a[title='View cart']");
+	
 
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -37,5 +38,15 @@ public class HomePage extends BasePage {
 	public CartPage clickViewCart() {
 		wait.until(ExpectedConditions.elementToBeClickable(viewCartLink)).click();
 		return new CartPage(driver);
+	}
+	
+	private By getAddToCartBtnElement(String productName) {
+		return By.cssSelector("a[aria-label='Add “" +productName + "” to your cart']");
+	}
+	
+	public HomePage clickAddToCartBtn(String productName) {
+		By addToCartBtn = getAddToCartBtnElement(productName);
+		wait.until(ExpectedConditions.elementToBeClickable(addToCartBtn)).click();
+		return this;
 	}
 }

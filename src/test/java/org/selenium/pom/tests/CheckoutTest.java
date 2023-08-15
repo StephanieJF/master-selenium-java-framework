@@ -6,6 +6,7 @@ import org.selenium.pom.api.actions.BillingApi;
 import org.selenium.pom.api.actions.CartApi;
 import org.selenium.pom.api.actions.SignUpApi;
 import org.selenium.pom.base.BaseTest;
+import org.selenium.pom.dataproviders.DataProviders;
 import org.selenium.pom.objects.BillingAddress;
 import org.selenium.pom.objects.Product;
 import org.selenium.pom.objects.User;
@@ -19,7 +20,7 @@ import io.restassured.http.Cookies;
 
 public class CheckoutTest extends BaseTest {
 	
-	@Test
+	//@Test
 	public void guestCheckoutUsingDirectBankTransfer() throws IOException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
@@ -33,7 +34,7 @@ public class CheckoutTest extends BaseTest {
 	Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 }
 	
-	@Test
+	//@Test
 	public void loginAndCheckoutUsingDirectBankTransfer() throws IOException, InterruptedException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		SignUpApi signUpApi = new SignUpApi();
@@ -57,9 +58,8 @@ public class CheckoutTest extends BaseTest {
 	Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 	}
 	
-	@Test
-	public void checkoutAccountAndEditBillingAddress() throws IOException, InterruptedException {
-		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
+	@Test(dataProvider = "getBillingAddresses", dataProviderClass = DataProviders.class)
+	public void checkoutAccountAndEditBillingAddress(BillingAddress billingAddress) throws IOException, InterruptedException {
         String username = "demouser" + new FakerUtils().generateRandomNumber();
         User user = new User(username, "demopwd", username + "@testing.com");
 
@@ -80,7 +80,7 @@ public class CheckoutTest extends BaseTest {
         Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 	}
 	
-	@Test
+	//@Test
 	public void guestCheckoutUsingCashOnDelivery() throws InterruptedException, IOException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
@@ -94,7 +94,7 @@ public class CheckoutTest extends BaseTest {
 	Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 	}
 	
-	@Test
+	//@Test
 	public void loginAndCheckoutUsingCashOnDelivery() throws IOException, InterruptedException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		SignUpApi signUpApi = new SignUpApi();

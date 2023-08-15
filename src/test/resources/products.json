@@ -1,6 +1,56 @@
 [
 	{
 		"id": 1215,
+		"featured": true,
+		"onStorePage": true,
 		"name": "Blue Shoes"
+	},
+	{
+		"id": 1209,
+		"featured": true,
+		"onStorePage": false,
+		"name": "Denim Blue Jeans"
+	},
+	{
+		"id": 1205,
+		"featured": true,
+		"onStorePage": true,
+		"name": "Basic Blue Jeans"
+	},
+	{
+		"id": 1198,
+		"featured": true,
+		"onStorePage": true,
+		"name": "Anchor Bracelet"
+	},
+	{
+		"id": 1193,
+		"featured": false,
+		"onStorePage": true,
+		"name": "Black Over-the-shoulder Handbag"
+	},
+	{
+		"id": 1206,
+		"featured": false,
+		"onStorePage": true,
+		"name": "Blue Denim Shorts"
+	},
+	{
+		"id": 1199,
+		"featured": false,
+		"onStorePage": true,
+		"name": "Boho Bangle Bracelet"
+	},
+	{
+		"id": 1211,
+		"featured": false,
+		"onStorePage": true,
+		"name": "Dark Brown Jeans"
+	},
+	{
+		"id": 1196,
+		"featured": true,
+		"onStorePage": true,
+		"name": "Blue Tshirt"
 	}
 ]

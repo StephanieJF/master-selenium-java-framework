@@ -1,3 +1,4 @@
+[
 {
 "firstName": "demo",
 "lastName": "user",
@@ -9,4 +10,29 @@
 "email": "test@testing.com",
 "company": "democompany",
 "phone": "8881234567"
+},
+{
+"firstName": "demo2",
+"lastName": "user2",
+"country": "India",
+"addressLineOne": "Pune",
+"city": "Pune",
+"state": "Maharashtra",
+"postCode": "411001",
+"email": "test2@testing.com",
+"company": "demo2company",
+"phone": "8881234567"
+},
+{
+"firstName": "demo3",
+"lastName": "user3",
+"country": "United Kingdom",
+"addressLineOne": "Carlisle",
+"city": "Carlisle",
+"state": " ",
+"postCode": "WF87 0BF",
+"email": "test3@testing.com",
+"company": "demo3company",
+"phone": "4476587698"
 }
+]

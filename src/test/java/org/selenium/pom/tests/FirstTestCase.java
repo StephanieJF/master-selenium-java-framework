@@ -27,13 +27,13 @@ public class FirstTestCase extends BaseTest {
 		
 		StorePage storePage = new HomePage(getDriver()).
 				load().
-				navigateToStoreUsingMenu().
+				getPageHeader().navigateToStoreUsingMenu().
 				search(searchFor);
 		
 		Assert.assertEquals(storePage.getTitle(), "Search results: “" + searchFor + "”");
-		storePage.clickAddToCartBtn(product.getName());
+		storePage.getProductThumbnail().clickAddToCartBtn(product.getName());
 		
-		CartPage cartPage = storePage.clickViewCart();
+		CartPage cartPage = storePage.getProductThumbnail().clickViewCart();
 		Assert.assertEquals(cartPage.getProductName(), product.getName());
 		
 		CheckoutPage checkoutPage = cartPage.
@@ -54,13 +54,13 @@ public class FirstTestCase extends BaseTest {
 		
 		StorePage storePage = new HomePage(getDriver()).
 				load().
-				navigateToStoreUsingMenu().
+				getPageHeader().navigateToStoreUsingMenu().
 				search(searchFor);
 		
 		Assert.assertEquals(storePage.getTitle(), "Search results: “"+ searchFor +"”");
-		storePage.clickAddToCartBtn(product.getName());
+		storePage.getProductThumbnail().clickAddToCartBtn(product.getName());
 		
-		CartPage cartPage = storePage.clickViewCart();
+		CartPage cartPage = storePage.getProductThumbnail().clickViewCart();
 		Assert.assertEquals(cartPage.getProductName(), product.getName());
 		
 		CheckoutPage checkoutPage = cartPage.

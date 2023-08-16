@@ -17,7 +17,7 @@ public class NavigationTest extends BaseTest {
 
 		StorePage storePage = new HomePage(getDriver()).
 				load().
-				navigateToStoreUsingMenu();
+				getPageHeader().navigateToStoreUsingMenu();
 		Assert.assertEquals(storePage.getTitle(), "Store");
 	}
 	
@@ -33,7 +33,7 @@ public class NavigationTest extends BaseTest {
 	public void navigateFromHomeToFeaturedProductPage() throws IOException {
 		String product = new Product(1215).getName();
 		ProductPage productPage = new HomePage(getDriver()).load().
-				navigateToProductPage(product);
+				getPageHeader().navigateToProductPage(product);
 		Assert.assertEquals(productPage.getProductTitle(), product);
 	}
 	

@@ -3,9 +3,13 @@
 <suite name="Suite1" verbose="1" thread-count="2" parallel="tests">
  	<test name="Chrome" thread-count="6" parallel="methods"> 
  		<parameter name="browser" value="CHROME" /> 
- 		<packages> 
- 			<package name="org.selenium.pom.tests" /> 
- 		</packages> 
+ 		<classes> 
+ 			<class name="org.selenium.pom.tests.NavigationTest">
+ 				<methods>
+ 					<include name="navigateFromHomeToStoreUsingMainMenu"/>
+ 				</methods>
+ 			</class> 
+ 		</classes> 
  	</test> 
 <!-- 	<test name="Firefox" thread-count="2" parallel="methods">
 		<parameter name="browser" value="FIREFOX" />

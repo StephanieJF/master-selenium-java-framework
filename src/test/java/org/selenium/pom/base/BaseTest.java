@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
-import org.selenium.pom.factory.DriverManager;
+import org.selenium.pom.constants.DriverType;
+import org.selenium.pom.factory.abstractFactory.DriverManagerAbstract;
+import org.selenium.pom.factory.abstractFactory.DriverManagerFactoryAbstract;
 import org.selenium.pom.utils.CookieUtils;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,7 +18,17 @@ import io.restassured.http.Cookies;
 
 public class BaseTest {
 	
+	private ThreadLocal<DriverManagerAbstract> driverManager = new ThreadLocal<>();
 	private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	
+	
+	private void setDriverManager(DriverManagerAbstract driverManager) {
+		this.driverManager.set(driverManager);
+	}
+	
+	protected DriverManagerAbstract getDriverManager() {
+		return this.driverManager.get();
+	}
 	
 	
 	private void setDriver(WebDriver driver) {
@@ -32,14 +44,20 @@ public class BaseTest {
 	public void startDriver(@Optional String browser) {
 		browser = System.getProperty("browser", browser); //system property from mvn command if running from maven cli, otherwise defaults to testng.xml parameter
 //		if(browser == null) browser = "CHROME";
-		setDriver(new DriverManager().initializeDriver(browser));
-		System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " + "DRIVER = " + getDriver());
+//		setDriver(new DriverManagerOriginal().initializeDriver(browser));
+//		setDriver(DriverManagerFactory.getManager(DriverType.valueOf(browser)).createDriver());
+		setDriverManager(DriverManagerFactoryAbstract.
+				getManager(DriverType.valueOf(browser)));
+		setDriver(getDriverManager().getDriver());
+		System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " + 
+				"DRIVER = " + getDriver());
 	}
 	
 	
 	@AfterMethod
 	public void quitDriver() {
-		getDriver().quit();
+//		getDriver().quit();
+		getDriverManager().getDriver().quit();
 		System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " + "DRIVER = " + getDriver());
 	}
 	

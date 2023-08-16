@@ -145,10 +145,16 @@ public class CheckoutPage extends BasePage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(loginBtn)).click();
 		return this;
 	}
+	private CheckoutPage waitForLoginBtnToDisappear() {
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(loginBtn));
+		return this;
+	}
+	
 	public CheckoutPage login(User user) {
 		return enterLoginName(user.getUsername()).
 		enterLoginPwd(user.getPassword()).
-		clickLoginBtn();
+		clickLoginBtn().
+		waitForLoginBtnToDisappear();
 	}
 	public String getProductName() {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(productName)).getText();

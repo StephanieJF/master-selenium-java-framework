@@ -3,54 +3,63 @@
 		"id": 1215,
 		"featured": true,
 		"onStorePage": true,
-		"name": "Blue Shoes"
+		"name": "Blue Shoes",
+		"price": 45.00
 	},
 	{
 		"id": 1209,
 		"featured": true,
 		"onStorePage": false,
-		"name": "Denim Blue Jeans"
+		"name": "Denim Blue Jeans",
+		"price": 100.00
 	},
 	{
 		"id": 1205,
 		"featured": true,
 		"onStorePage": true,
-		"name": "Basic Blue Jeans"
+		"name": "Basic Blue Jeans",
+		"price": 30.00
 	},
 	{
 		"id": 1198,
 		"featured": true,
 		"onStorePage": true,
-		"name": "Anchor Bracelet"
+		"name": "Anchor Bracelet",
+		"price": 10.00
 	},
 	{
 		"id": 1193,
 		"featured": false,
 		"onStorePage": true,
-		"name": "Black Over-the-shoulder Handbag"
+		"name": "Black Over-the-shoulder Handbag",
+		"price": 75.00
 	},
 	{
 		"id": 1206,
 		"featured": false,
 		"onStorePage": true,
-		"name": "Blue Denim Shorts"
+		"name": "Blue Denim Shorts",
+		"price": 35.00
 	},
 	{
 		"id": 1199,
 		"featured": false,
 		"onStorePage": true,
-		"name": "Boho Bangle Bracelet"
+		"name": "Boho Bangle Bracelet",
+		"price": 25.00
 	},
 	{
 		"id": 1211,
 		"featured": false,
 		"onStorePage": true,
-		"name": "Dark Brown Jeans"
+		"name": "Dark Brown Jeans",
+		"price": 145.00
 	},
 	{
 		"id": 1196,
 		"featured": true,
 		"onStorePage": true,
-		"name": "Blue Tshirt"
+		"name": "Blue Tshirt",
+		"price": 34.00
 	}
 ]

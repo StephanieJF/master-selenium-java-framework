@@ -10,6 +10,7 @@ public class Product {
 	private String name;
 	private boolean featured;
 	private boolean onStorePage;
+	private int price;
 	
 	public Product() {
 	}
@@ -22,6 +23,7 @@ public class Product {
 				this.name = product.getName();
 				this.featured = product.getIsFeatured();
 				this.onStorePage = product.getOnStorePage();
+				this.price = product.getPrice();
 			}		
 		}
 	}
@@ -51,6 +53,14 @@ public class Product {
 
 	public void setOnStorePage(boolean onStorePage) {
 		this.onStorePage = onStorePage;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 }

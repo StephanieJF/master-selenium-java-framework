@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
 
 public class DataProviders {
 	
-	@DataProvider(name = "getFeaturedProducts", parallel=true)
+	@DataProvider(name = "getFeaturedProducts", parallel=false)
 	public Object[] getFeaturedProducts() throws IOException {
 	 Product[] products = JacksonUtils.deserializeJson("products.json", Product[].class);
 	 List<Product> featuredProductsArrayList = new ArrayList<>();
@@ -40,4 +40,5 @@ public class DataProviders {
 	public Object[] getBillingAddresses() throws IOException {
 		return JacksonUtils.deserializeJson("billingAddress.json", BillingAddress[].class);
 	}
+	
 }

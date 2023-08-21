@@ -73,8 +73,8 @@ public class BaseTest {
 			File destFile = new File("scr" + File.separator + browser + File.separator +
 					result.getTestClass().getRealClass().getSimpleName() + "_" +
 					result.getMethod().getMethodName() + ".png");
-//			takeScreenshot(destFile);
-			takeScreenshotUsingAShot(destFile);
+			takeScreenshot(destFile);
+//			takeScreenshotUsingAShot(destFile);
 		}
 		getDriverManager().getDriver().quit();
 	}
@@ -92,15 +92,15 @@ public class BaseTest {
 		FileUtils.copyFile(srcFile, destFile);
 	}
 	
-	private void takeScreenshotUsingAShot(File destFile) {
-		Screenshot screenshot = new AShot()
-		  .shootingStrategy(ShootingStrategies.viewportPasting(100))
-		  .takeScreenshot(getDriver());
-		
-		try {
-			ImageIO.write(screenshot.getImage(), "PNG", destFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	private void takeScreenshotUsingAShot(File destFile) {
+//		Screenshot screenshot = new AShot()
+//		  .shootingStrategy(ShootingStrategies.viewportPasting(100))
+//		  .takeScreenshot(getDriver());
+//		
+//		try {
+//			ImageIO.write(screenshot.getImage(), "PNG", destFile);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }

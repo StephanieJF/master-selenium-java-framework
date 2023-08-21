@@ -10,6 +10,7 @@ import org.selenium.pom.dataproviders.DataProviders;
 import org.selenium.pom.objects.BillingAddress;
 import org.selenium.pom.objects.Product;
 import org.selenium.pom.objects.User;
+import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.utils.FakerUtils;
 import org.selenium.pom.utils.JacksonUtils;
@@ -20,7 +21,7 @@ import io.restassured.http.Cookies;
 
 public class CheckoutTest extends BaseTest {
 	
-	//@Test
+	@Test
 	public void guestCheckoutUsingDirectBankTransfer() throws IOException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
@@ -34,7 +35,7 @@ public class CheckoutTest extends BaseTest {
 	Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 }
 	
-	//@Test
+	@Test
 	public void loginAndCheckoutUsingDirectBankTransfer() throws IOException, InterruptedException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		SignUpApi signUpApi = new SignUpApi();
@@ -80,7 +81,7 @@ public class CheckoutTest extends BaseTest {
         Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 	}
 	
-	//@Test
+	@Test
 	public void guestCheckoutUsingCashOnDelivery() throws InterruptedException, IOException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		CheckoutPage checkoutPage = new CheckoutPage(getDriver()).load();
@@ -94,7 +95,7 @@ public class CheckoutTest extends BaseTest {
 	Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
 	}
 	
-	//@Test
+	@Test
 	public void loginAndCheckoutUsingCashOnDelivery() throws IOException, InterruptedException {
 		BillingAddress billingAddress = JacksonUtils.deserializeJson("billingAddress.json", BillingAddress.class);
 		SignUpApi signUpApi = new SignUpApi();
@@ -114,6 +115,23 @@ public class CheckoutTest extends BaseTest {
 		setBillingAddress(billingAddress).
 		selectCashOnDeliveryRadioBtn().placeOrder();
 		Assert.assertEquals(checkoutPage.getOrderConfirmationText(), "Thank you. Your order has been received.");
+	}
+
+	@Test(dataProvider = "getStorePageProducts", dataProviderClass = DataProviders.class)
+	public void guestCheckoutFreeShippingCoupon(Product product) throws IOException, InterruptedException {
+		CartPage cartPage = new CartPage(getDriver()).load();
+		CartApi cartApi = new CartApi(new Cookies());
+		cartApi.addToCart(product.getId(), 1);
+		injectCookiesToBrowser(cartApi.getCookies());
+		cartPage.load();
+		double totalBeforeCoupon = cartPage.getCartTotal();
+		double shippingBeforeCoupon = cartPage.getShippingCost();
+		System.out.println("total before:" + totalBeforeCoupon);
+		cartPage.enterCouponCode("freeship").loadFreeShipping();
+		System.out.println("total after:" + cartPage.getCartTotal());
+		double expectedTotalAfterCoupon = totalBeforeCoupon - shippingBeforeCoupon;
+		System.out.println("expectedtotal" + expectedTotalAfterCoupon);
+		Assert.assertEquals(cartPage.getCartTotal(), expectedTotalAfterCoupon);
 	}
 
 }
